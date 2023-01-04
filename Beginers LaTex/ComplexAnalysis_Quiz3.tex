@@ -1,0 +1,204 @@
+\documentclass[addpoints,12pt]{exam}
+\usepackage{wrapfig} 
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bigints}
+\usepackage{xfrac}
+\usepackage{wrapfig} %able to insert pictures in text
+\usepackage{gensymb} %allows the degree symbol for weather or angles
+\usepackage{enumitem}
+
+\usepackage{mathtools,etoolbox}
+%\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{\ifblank{#1}{{}\cdot{}}{#1}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+\usepackage{permute}
+\newcommand{\rta}{\rightarrow}
+\newcommand{\lta}{\leftarrow}
+\newcommand{\lrta}{\leftrightarrow}
+\newcommand{\Rta}{\longrightarrow}
+\newcommand{\Lta}{\longleftarrow}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\F}{{\mathbb F}}
+\renewcommand{\O}{{\mathcal O}}
+\newcommand{\imp}{\Rightarrow}
+\renewcommand{\v}{\mathbf v}
+\newcommand{\abs}[1]{\lvert {#1} \rvert }
+\newcommand{\set}[1]{\{#1\}}
+
+\newcommand{\tif}{\text { if }}
+\newcommand{\telse}{\text { else }}
+\newcommand{\tso}{\text { so }}
+\newcommand{\tsuch}{\text { such }}
+\newcommand{\tsuchthat}{\text { such that }}
+\newcommand{\tthat}{\text { that }}
+\newcommand{\twhen}{\text{ when }}
+\newcommand{\twith}{\text{ with }}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tfor}{\text { for }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\tifoif}{\text{ if and only if }}
+\newcommand{\gam}{\gamma}
+\newcommand{\Gam}{\Gamma}
+\newcommand{\del}{\delta}
+\newcommand{\eps}{\epsilon}
+\newcommand{\lam}{\lambda}
+\newcommand{\Lam}{\Lambda}
+\newcommand{\sig}{\sigma}
+\newcommand{\Sig}{\Sigma}
+\newcommand{\tta}{\theta}
+\newcommand{\cyc}[1]{\langle #1 \rangle}
+\newcommand{\cmod}[1]{\,(\mbox{mod } #1)}
+\renewcommand*\pmtseparator{\ }
+
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Jac}{Jac}
+
+ \usepackage{subfigure}
+
+  \newcommand{\vb}{\mathbf{v}}
+ \newcommand{\xb}{\mathbf{x}}
+ \newcommand{\eb}{\mathbf{e}}
+ \newcommand{\wb}{\mathbf{w}}
+  \newcommand{\ds}{\displaystyle}
+  \newcommand{\Bzero}{\boldsymbol{ 0}}
+  \newcommand{\Bone}{\boldsymbol{ 1}}
+  \newcommand{\Ba}{\boldsymbol{ a}}
+  \newcommand{\Bb}{\boldsymbol{ b}}
+  \newcommand{\Bc}{\boldsymbol{ c}}
+  \newcommand{\Bd}{\boldsymbol{ d}}
+  \newcommand{\Bu}{\boldsymbol{ u}}
+  \newcommand{\Bw}{\boldsymbol{ w}}
+  \newcommand{\Bdel}{\boldsymbol{ \delta}}
+  \newcommand{\BM}{\boldsymbol{ M}}
+  \newcommand{\BBM}{\overline{\boldsymbol{ M}}}
+  \newcommand{\BN}{\boldsymbol{ N}}
+  \newcommand{\BBN}{\overline{\boldsymbol{ N}}}
+  \newcommand{\BT}{\boldsymbol{ T}}
+\newcommand{\barE}{\overline{E}}
+\newcommand{\barL}{\overline{L}}
+\newcommand{\barR}{\overline{R}}
+\newcommand{\bare}{\overline{e}}
+\newcommand{\barl}{\overline{\ell}}
+\newcommand{\barr}{\overline{r}}
+\newcommand{\barlam}{\overline{\lam}}
+\newcommand{\barrho}{\overline{\rho}}
+\newcommand{\frad}[2]{\displaystyle{\frac{#1}{#2}}}
+\newcommand{\twovec}[2]{
+    \begin{bmatrix}
+     #1 \\
+      #2 
+    \end{bmatrix} }
+    
+    \newcommand{\threevec}[3]{
+    \begin{bmatrix}
+     #1 \\
+      #2 \\
+      #3 
+    \end{bmatrix} }
+\newcommand{\ubt}[2]{\underbrace{#1}_{\mbox{\small #2}}}
+\newcommand{\ubm}[2]{\underbrace{#1}_{#2}}
+\def\nrml{\trianglelefteq}
+
+\begin{document}
+
+\begin{center}
+{\large \bf Third Quiz \hspace*{.3in} Math 566 \hspace*{.3in} 
+Spring 2022\\ \bigskip {\em Complex Analysis} by Stein and Shakarchi} \vspace*{1cm}\\ \bf Solutions by Ebagnisev Sahiv Lopez-Borja \\
+\bf Due date: March 24$^{th}$
+\end{center}
+
+\begin{questions}
+
+\question[8]  Chapter 3, Exercise 14, page 105.\\
+Prove that all entire functions that are also injective take the form $$f(z)=az+b \mbox{ with } a,b \in \C, a\neq 0$$
+
+\emph{Solution:} 
+\vspace{1mm}
+
+Assume  $f:\C \to \C$ where $f$ is holomorphic and injective.  Choose $z_0$ such that $f'(z_0)\neq 0$.  If no such point exists then $f'(z_0) =0$ and thhus we will find that $f$ must be constant.  In addition, $f$ is assumed to be injective, thus we have this guaranteed.
+
+Now, by the Open Mapping Theorem, there exists an open $U-$neighborhood such that $z_0 \in U$ and $f(U)=V$, is also a open neighborhood.
+
+Let us consider $\cfrac{1}{f(z)-f(z_0)}$ as it is bounded on $\C \setminus U$ and moreover bounded at $\infty$ with a simple pole at $z_0$.
+
+Now, $G(z)=\cfrac{z}{f(z)-f(z_0)}$ is entire and bounded, so by Louiville's Theorem we have that $G$ is constant. 
+
+Now we consider a few cases.  If $G$ is entire and not a polynomial, we have that since $z_0$ is an essential singularity of $G$, we apply the Casorati-Weierstrass Theorem, for which it follows that such a function $G$ will have $G(U) $ is open and $G $ is dense outside of $U$.  (We can select a sequence $z_n \to z_0$ such that $G(z_n) \to G(z_0)$).  From this it follows that the sets have a non empty intersection, and from thus we have that injectivity fails.
+
+With this we have that $G$ must be a polynomial, but if we consider a polynomial of degree higher than 1, then we have that injectivity fails due to the derivative.  From this we have that $G$ must be a constant function.
+
+Now, WLOG, let us have $z_0=0$ for which, $f(0)=0$ and 
+
+$$G(z)= \cfrac{z}{f(z)} = C_1z+ C_2 \leftrightarrow f(z)=\cfrac{z}{C_1z+C_2}$$
+
+Since $f$ has no poles and is nonconstant (this follows from Louiville on $G$), we have that $C_1$ must be $0$.
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%% PROBLEM 2 %%%%%%%%%%%%%%%%%%%%%
+
+\question[12]  Assume that the integral 
+\[ I(w) =\int_{-\infty}^{\infty} \exp{(-t^2+2wt)}\, dt \]
+is a convergent improper integral for all $w\in\C$.\bigskip\\
+(i)  (4 pts)  Show that $I(w) = \sqrt{\pi}\exp{(w^2)}$ when $w$ is real.   Use that $I(0)= \sqrt{\pi}$.\bigskip\\
+(ii)   (6 pts) Show that $I(w)$ has an analytic extension to $\C$.\bigskip\\
+(iii)   (2 pts) Show that $I(w) = \sqrt{\pi}\exp{(w^2)}$ when $w$ is complex.
+
+\emph{Solution:}
+
+i) We proceed by completing the square of the exponent:
+
+$$(-t^2+2wt)=-(t^2-2wt+ w^2)+w^2=-(t-w)^2+w^2$$
+
+From the properties of exponent and due to the fact that $w$ is real, we have that $I(w)$ becomes:
+
+$$I(w) = e^{w^2}\int_{-\infty}^{\infty} e^{-(t-w)^2} dt$$
+Using a $u=t-w, du=dt,$ so after a change of variable we now have:
+
+$$I(w) = e^{w^2}\int_{-\infty}^{\infty} e^{-(u)^2} du$$
+
+From the assumption we have that $I(0)=\sqrt{\pi}$, thus the result follows. \\
+
+ii) We have to show that an analytic extension exists in all of $\C$.
+
+We will take a contour formed by the positive $x-axis$ and $x\to \infty$, the line that forms an angle of $\frac{\pi}{4}$ with the $x-axis$, and the circular arc that connects  the two endpoints of the first two paths with radius $R$.  
+
+The integral along the circular arc will evaluate to $0$ as $R \to \infty$.
+
+$$ \abs{e^{w^2}\int_\gamma e^{-(t-w)^2} dt} =  e^{-R^2(\cos \theta +i\sin \theta)^2}\int_{0}^{\tfrac{\pi}{4}} e^{-(t-w)^2} dt $$
+
+The integral value as we follow the x-axis is equivalent half the value of the integral in part (i) : $$\cfrac{1}{2}\sqrt{\pi}$$
+
+We now only need to check the value of the integral along the diagonal.  But on close observation we note that the value of this integral along the closed path will evaluate to $0$ due to the integrand being an entire function(without an singularities to acccount for).  This would mean that the third integral along the diagonal is equivalent to $\cfrac{1}{2}\sqrt{\pi}$. As we sum the two pieces we end up with the same result as in part (i), thus we have shown that there is an analytic extension of this functions $I$. \\
+
+iii) By part (ii) we have that the change to a complex variable for $w$ will not change the result.  We proceed by completing the square of the exponent:
+
+$$(-t^2+2wt)=-(t^2-2wt+ w^2)+w^2=-(t-w)^2+w^2$$
+
+From the properties of exponent we have that $I(w)$ becomes:
+
+$$I(w) = \int_{-\infty}^{\infty} e^{-(t-w)^2} \cdot e^{w^2} dt$$
+Using a $u=t-w, du=dt,$ so after a change of variable we now have:
+
+$$I(w) = e^{w^2}\int_{-\infty}^{\infty} e^{-(u)^2} du$$
+
+From the assumption we have that $I(0)=\sqrt{\pi}$, thus the result follows. \\
+
+\end{questions}
+
+\end{document}

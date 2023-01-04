@@ -1,0 +1,47 @@
+\documentclass[addpoints,12pt]{exam}
+\usepackage{wrapfig} 
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{wrapfig} %able to insert pictures in text
+\usepackage{gensymb} %allows the degree symbol for weather or angles
+\usepackage{enumitem}
+
+\usepackage[table,xcdraw]{xcolor}
+
+\usepackage{mathtools,etoolbox}
+\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{\ifblank{#1}{{}\cdot{}}{#1}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+
+\begin{document}
+
+
+\begin{center}
+\fbox{\fbox{\parbox{5.5in}{\centering
+Calculus Integral Quiz: Advanced Techniques}}}
+
+\end{center}
+\makebox[\textwidth]{Name and period:\enspace\hrulefill}
+\begin{questions}
+
+	\question Evaluate the following integrals using an appropriate method. Show all work to receive credit. 
+	
+	WORK ALL ANSWERS ON A SEPARATE SHEET OF PAPER
+		\begin{parts}
+		\part $$\int \cfrac{2e^{2x}}{(e^x+1)(e^x-1)}dx$$
+		\part $$\int \ln(x+\sqrt{x}) dx$$
+		\part $$\int_{3}^{4} \cfrac{20 dx}{x^2(2+\frac{1}{x})(2-\frac{1}{x})(\frac{2}{x}-1)}\bigg(= \int_{3}^{4} \cfrac{20\textcolor{red}{x} dx}{\textcolor{red}{x} \cdot x^2(2+\frac{1}{x})(2-\frac{1}{x})(\frac{2}{x}-1)}\bigg)\footnote{Notice that for part 1(c) I have used the multiply/divide trick that was used on Exam 3. This is a common manipulation so keep this is mind whenever you reach a dead end.}$$ 
+		\end{parts}
+	
+	\question Solve 2 out of the 5 integrals below this line.
+		\begin{parts}
+		\part $$\int \cfrac{dx}{\sqrt{x-1}+\sqrt[3]{x-1}^3}$$
+		\part $$\int \sin^3(x) dx$$
+		\part $$\int \cos^4(2x) dx$$
+		\part $$\int \cos(4x)e^{2x+5} dx $$
+		\part $$\int \frac{x^3}{\sec(x)}dx$$
+		\end{parts}
+
+\end{questions}
+
+\end{document}
