@@ -1,0 +1,40 @@
+\documentclass[addpoints,12pt]{exam}
+\usepackage{wrapfig} 
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{wrapfig} %able to insert pictures in text
+\usepackage{gensymb} %allows the degree symbol for weather or angles
+
+\usepackage{mathtools,etoolbox}
+\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{\ifblank{#1}{{}\cdot{}}{#1}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+
+
+\begin{document}
+\centering{BC Quiz 5}
+\begin{questions}
+
+\question[3]
+Determine if the function is continuous.  If it is discontinuous, state whether it is removable or non-removable.
+	\begin{parts}
+		\part $b(x)=\cfrac{x(3x+1)}{3x^2-5x-2}$
+		\vspace{1in}
+	\end{parts}
+	
+\question[2]
+Find the value of $k$ that makes $\alpha$ continuous if:
+	\begin{equation*}
+ 			 \alpha(x) =\begin{cases}
+      				-\vert x-2 \vert +k & \text{,if $x \leq 4$}\\
+      				-x^2+11x-23 & \text{,if $x >4$}\\
+    				\end{cases}       
+		\end{equation*}
+\vspace{2in} 
+\question[5]
+Evaluate the following limit:
+$$\lim\limits_{\beta \to 0} \cfrac{\sin(\alpha+\beta)-\sin(\alpha)}{\beta}$$
+
+\end{questions}
+
+\end{document}
