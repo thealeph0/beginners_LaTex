@@ -1,0 +1,485 @@
+\documentclass[12pt, letterpaper]{report}
+\usepackage[export]{adjustbox}
+\usepackage[margin=0.5in]{geometry} %defined paper below
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+%\usepackage[usenames,dvipsnames]{xcolor} %adds mucho colors
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%URLs%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdfpagemode=FullScreen,
+    }
+
+\urlstyle{same} %%keeps the URL font same as text
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%Math Package%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[mathscr]{eucal} %produce a script H, (for Hilbert Space or Laplace Transform)
+\usepackage{tasks} %allows nice lists https://tex.stackexchange.com/a/324740
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%included for CS%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language={[latex]TeX}, %%change to your preferred language
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+%%%%%%%%%%%%end of CS additions%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{enumitem} %allows to resume enumeration
+\usepackage{tabu} %allows tables using tabu
+\usepackage{standalone}
+\usepackage{tasks}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{tikz-network}
+\usetikzlibrary{matrix}
+
+\usetikzlibrary{arrows.meta,shapes,automata,backgrounds,petri,positioning}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.shapes}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{decorations.fractals}
+\usetikzlibrary{decorations.footprints}
+\usetikzlibrary{calc}
+\usetikzlibrary{spy}
+\usetikzlibrary{arrows}
+\usepackage{mathtools,etoolbox}
+
+\usepackage{parskip} %something about paragraph lines
+%defines columns
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+
+\usepackage{wrapfig} %able to insert pictures in text
+\usepackage{gensymb} %allows the degree symbol for weather or angles
+\usepackage{epigraph} %adds little quote start of chapter
+\usepackage{systeme}%something about allowing system of equations stuff
+
+\usepackage{pdfpages} %allows for import of separate files
+
+
+\usepackage[framemethod=TikZ]{mdframed} %allows framed definitions
+
+%%%%%%%%%%%%%%%%%%%%%%THEOREM BOXES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{theo}\setcounter{theo}{0}
+%\renewcommand{\thetheo}{\arabic{chapter}.\arabic{theo}}
+\newenvironment{theo}[2][]{%
+						\refstepcounter{theo}%
+						\ifstrempty{#1}%
+						{\mdfsetup{%
+						frametitle={%
+						\tikz[baseline=(current bounding box.east),outer sep=0pt]
+						\node[anchor=east,rectangle,fill=JungleGreen!55]
+						{\strut Theorem~\thetheo};}}
+						}%
+					{\mdfsetup{%
+					frametitle={%
+					\tikz[baseline=(current bounding box.east),outer sep=0pt]
+					\node[anchor=east,rectangle,fill=JungleGreen!55]
+					{\strut Theorem~\thetheo:~#1};}}%
+						}%
+					\mdfsetup{innertopmargin=10pt,linecolor=JungleGreen!55,%
+					linewidth=2pt,topline=true,%
+					frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+					}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%DEFINTION BOXES%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{defi}[chapter] \setcounter{defi}{0}
+\renewcommand{\thedefi}{\arabic{chapter}.\arabic{defi}}
+\newenvironment{defi}[2][]{%
+						\refstepcounter{defi}%
+						\ifstrempty{#1}%
+						{\mdfsetup{%
+						frametitle={%
+						\tikz[baseline=(current bounding box.east),outer sep=0pt]
+						\node[anchor=east,rectangle,fill=WildStrawberry!55]
+						{\strut Definition~\thedefi};}}
+						}%
+					{\mdfsetup{%
+					frametitle={%
+					\tikz[baseline=(current bounding box.east),outer sep=0pt]
+					\node[anchor=east,rectangle,fill=WildStrawberry!55]
+					{\strut Definition~\thedefi:~#1};}}%
+						}%
+					\mdfsetup{innertopmargin=10pt,linecolor=WildStrawberry!55,%
+					linewidth=2pt,topline=true,%
+					frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+					}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%% Steps %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{proc}[section] \setcounter{proc}{0}
+\renewcommand{\theproc}{ }
+\newenvironment{proc}[2][]{%
+						\refstepcounter{proc}%
+						\ifstrempty{#1}%
+						{\mdfsetup{%
+						frametitle={%
+						\tikz[baseline=(current bounding box.east),outer sep=0pt]
+						\node[anchor=east,rectangle, rounded corners,fill=RoyalBlue!60]
+						{\strut PS~};}}
+						}%
+					{\mdfsetup{%
+					frametitle={%
+					\tikz[baseline=(current bounding box.east),outer sep=0pt]
+					\node[anchor=east,rectangle, rounded corners,fill=RoyalBlue!60]
+					{\strut PS~:~#1};}}%
+						}%
+					\mdfsetup{roundcorner=5pt, innertopmargin=10pt,linecolor=RoyalBlue!60, %
+					linewidth=2pt,topline=true,%
+					frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+					}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Custom Section %%%%%%%%
+\usepackage{titlesec}
+  \titleformat{\section}
+    {\normalfont\bfseries}{\thesection}{1em}{}[{\titlerule[.8pt]}]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Tasks%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\settasks{label-format={\color{green!70!black}\bfseries}, label-align=center, label-offset={5mm}, label-width={10mm}, item-indent={2mm}, item-format={\scshape\small}, column-sep={3mm}, after-item-skip=1mm, after-skip={3mm}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\Lra}{\Leftrightarrow}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mrm}{\mathrm}
+\newcommand{\ul}{\underline}
+\newcommand{\ol}{\overline}
+\newcommand{\cl}{\overline}
+\newcommand{\hs}{\hspace}
+\newcommand{\vs}{\vspace}
+
+%%%%%%%%%%%%%%%%%%%Topology%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\interior}[1]{\mathrm{int(#1)}}
+\newcommand{\bdy}[1]{\mathrm{bdy(#1)}}
+\newcommand{\inter}[1]{#1^{\mathsf{o}}}
+%\newcommand{\closure}[1]{\ol{#1}} % simple
+\newcommand{\closure}[2][3]{{}\mkern#1mu\ol{\mkern-#1mu#2}} %nicer on eyes
+\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{\ifblank{#1}{{}\cdot{}}{#1}} %absolute value bars
+
+\def\T{\mathcal{T}}
+\def\K{\mathcal{K}}
+\def\s{\mathcal{S}}
+\def\U{\mathscr{U}}
+\def\V{\mathscr{V}}
+\def\B{\mathcal{B}}
+
+\newcommand{\metspace}[2]{({#1},{#2})-\mbox{metric space}}
+\newcommand{\ms}[2]{({#1},{#2})}
+\newcommand{\ts}[2]{({#1},{#2})}
+
+\newcommand{\genfunc}[3]{{#3}\colon {#1} \longrightarrow {#2}}
+\newcommand{\genfuncdef}[5]{{#3} \colon {#1} \longrightarrow {#2}\mbox{ where } {#4} \mapsto {#5} }
+
+
+%%%%%%%%%%%%%%%%%% General %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\rsphere}{\mathbb{C}_\infty}
+\newcommand{\Disk}{\mathbb{D}}
+\newcommand{\disk}{\Delta}
+\newcommand{\wh}{\widehat}
+\newcommand{\e}{\varepsilon}
+\newcommand{\0}{\emptyset}
+
+\newcommand{\bd}{\partial}
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\pr}{\mathrm{Pr}}
+\newcommand{\sh}{\mathrm{Sh}}
+\newcommand{\dm}{\mathrm{diam}}
+\newcommand{\dist}{\mathrm{d}}
+\newcommand{\sm}{\setminus}
+
+\newcommand{\tp}[1]{\textcolor{violet}{\textbf{\emph{#1}}}}
+\newcommand{\tb}[1]{\textcolor{TealBlue!80!black}{\textbf{\emph{#1}}}}
+
+
+\def\C{\mathbb{C}}
+\def\R{\mathbb{R}}
+\def\Q{\mathbb{Q}}
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+
+
+
+
+%defined theorems and definitions section
+\theoremstyle{theorem}
+\newtheorem{defn}{\emph{Definition}}
+
+\theoremstyle{definition}
+\newtheorem{ndefn}{Naive Definition}
+
+\theoremstyle{definition}
+\newtheorem{ex}{Example}
+
+\theoremstyle{definition}
+\newtheorem{DIY}{DIY}
+
+\theoremstyle{definition}
+\newtheorem{post}{Postulate}
+
+\theoremstyle{theorem}
+\newtheorem{thm}{Theorema}
+
+\theoremstyle{theorem}
+\newtheorem{cor}{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{rmk}{Remark}
+
+\begin{document}
+
+\begin{center}
+\Large Linear Fraction Integrals \\
+\end{center}
+
+Compute the following anti-derivatives.  See if you identify any patterns.
+\begin{multicols}{3}
+\bfseries{\begin{Large}
+	\begin{enumerate}
+		\item $\displaystyle\int \cfrac{1}{x}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{1}{y}\; dy$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{1}{x-1}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{1}{2t-1}\; dt$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{1}{5t}\; dt$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{1}{s-15}\; ds$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{17}{5t-1}\; dt$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{20}{y-5}\; dy$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{1}{x^2}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{1}{1+y^2}\; dy$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{1}{x^4}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int \cfrac{1}{x^4+1}\; dx$
+	\end{enumerate}
+\end{Large}}
+
+\end{multicols}
+
+\includegraphics[width=.3\textwidth,right]{images/intno}
+
+\newpage
+\begin{center}
+\Large Linear Fraction Integrals \\ (Linear Denominator = $\ln \abs{f}$ + C)
+\end{center}
+
+Compute the following anti-derivatives.  See if you identify any patterns.
+\begin{multicols}{3}
+\bfseries{\begin{Large}
+	\begin{enumerate}
+		\item $\displaystyle\int \cfrac{1}{x}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{y}\; dy$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{x+1}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{2t+1}\; dt$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{5t}\; dt$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{3s+15}\; ds$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{17}{5t+4}\; dt$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{20}{y+5}\; dy$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{x^2}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{1+y^2}\; dy$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{x^2-1}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{x^3}\; dx$
+	\end{enumerate}
+\end{Large}}
+
+\end{multicols}
+
+\newpage
+
+\begin{center}
+\Large Exponential Integrals \\
+\end{center}
+
+Compute the following anti-derivatives.  See if you identify any patterns.
+\begin{multicols}{3}
+\bfseries{\begin{Large}
+	\begin{enumerate}
+		\item $\displaystyle\int e^{x}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int e^{2x}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int e^{5x}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int e^{3x}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int e^{5x-1}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int e^{3x-20}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int e^{2x-7}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int e^{\frac{1}{4}x}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int e^{-3x}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int -3e^{4x}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int -2e^{-4x}\; dx$
+		\vspace{3.5cm}
+		\item $\displaystyle\int 6e^{-6x}\; dx$
+		\vspace{3.5cm}
+		
+	\end{enumerate}
+\end{Large}}
+
+\end{multicols}
+
+
+%
+%\newpage
+%\begin{center}
+%\Large Notes
+%\end{center}
+
+\newpage
+\begin{center}
+\Large Integration of $\sin^{-1}(x)$\\ Homework
+\end{center}
+
+Compute the following anti-derivatives.  See if you identify any patterns.
+\begin{multicols}{3}
+\bfseries{\begin{Large}
+	\begin{enumerate}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{1-x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{1-4x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{1-3x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{1-16x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{4-x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{3-x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{2-x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{16-x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{25-9x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{4-81x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{9-16x^2}} \; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{\sqrt{1-x^2}} \; dx$
+	\end{enumerate}
+\end{Large}}
+
+\end{multicols}
+
+
+\newpage
+\begin{center}
+\Large Integration of $\tan^{-1}(x)$\\ Homework
+\end{center}
+
+Compute the following anti-derivatives.  See if you identify any patterns.
+\begin{multicols}{3}
+\bfseries{\begin{Large}
+	\begin{enumerate}
+		\item $\displaystyle\int \cfrac{1}{1+x^2}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{1+4x^2}\; dy$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{1+3x^2}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{1+2x^2}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{1+x^2}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{4+x^2}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{3+x^2}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{2+x^2}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{9+4x^2}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{25+9x^2}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{4x^2+16}\; dx$
+		\vspace{3cm}
+		\item $\displaystyle\int \cfrac{1}{1+x^2}\; dx$
+	\end{enumerate}
+\end{Large}}
+
+\end{multicols}
+
+
+	
+\end{document}
